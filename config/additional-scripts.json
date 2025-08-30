@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "next build",
+    "start": "next start", 
+    "lint": "next lint",
+    "type-check": "echo 'No TypeScript in this project'",
+    "test": "echo 'Tests not configured yet'"
+  }
+}

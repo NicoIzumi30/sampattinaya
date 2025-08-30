@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "links": ["Home", "Tentang", "Fitur", "Solusi", "Testimoni", "FAQ", "Peringkat", "News"],
+    "cta": "Coba Sekarang"
+  },
+  "hero": {
+    "kicker": "Platform Literasi Finansial",
+    "headline": "Satu platform, ribuan peluang: tingkatkan literasi finansialmu mulai hari ini.",
+    "subcopy": "Apakah Anda seorang pelajar, pekerja muda, orang tua, atau pelaku usaha kecil? sampattinaya membantu memahami dasar finansial, menyusun rencana yang jelas, dan mempraktikkan lewat simulasi interaktif.",
+    "ctas": ["Mulai Belajar", "Lihat Peringkat"],
+    "trust": ["Gratis", "Login aman", "Cek kesehatan finansial < 30 detik"]
+  }
+}

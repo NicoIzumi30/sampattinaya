@@ -98,7 +98,7 @@ const News = ({ language = 'id' }) => {
         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
           {currentContent.title}
         </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
           {currentContent.lead}
         </p>
       </div>
@@ -119,7 +119,7 @@ const News = ({ language = 'id' }) => {
             <div
               className={`
                 rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col
-                bg-gray-900 border border-gray-800 hover:border-gray-700
+                bg-[#171717] border border-[#404040] hover:border-[#15C26B]
                 shadow-sm hover:shadow-lg group-hover:-translate-y-1
               `}
             >
@@ -136,11 +136,11 @@ const News = ({ language = 'id' }) => {
                     }}
                   />
                   <div
-                    className="absolute inset-0 hidden items-center justify-center bg-gray-800"
+                    className="absolute inset-0 hidden items-center justify-center bg-[#171717]"
                   >
                     <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 rounded-lg bg-gray-700"></div>
-                      <p className="text-sm text-muted-foreground">Image</p>
+                      <div className="w-16 h-16 mx-auto mb-2 rounded-lg bg-[#404040]"></div>
+                      <p className="text-sm text-gray-400">Image</p>
                     </div>
                   </div>
                 </div>
@@ -149,7 +149,7 @@ const News = ({ language = 'id' }) => {
                 <div className="absolute top-4 left-4">
                   <span className={`
                     px-3 py-1 text-xs font-medium rounded-full
-                    bg-sampattinaya-accent/20 text-sampattinaya-accent border border-sampattinaya-accent/30
+                    bg-[#15C26B]/20 text-[#15C26B] border border-[#15C26B]/30
                   `}>
                     {currentContent.category}
                   </span>
@@ -158,17 +158,17 @@ const News = ({ language = 'id' }) => {
 
               {/* Content */}
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg font-semibold leading-tight group-hover:text-sampattinaya-accent transition-colors duration-200 mb-3 min-h-[3.5rem] line-clamp-2">
+                <h3 className="text-lg font-semibold leading-tight group-hover:text-[#15C26B] transition-colors duration-200 mb-3 min-h-[3.5rem] line-clamp-2 text-white">
                   {item.title}
                 </h3>
                 
-                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1 mb-4">
+                <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 flex-1 mb-4">
                   {item.excerpt}
                 </p>
 
                 {/* Meta Information */}
                 <div className="flex items-center justify-between mt-auto pt-2">
-                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                  <div className="flex items-center space-x-4 text-xs text-gray-400">
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-3 h-3" />
                       <span>{item.date}</span>
@@ -179,7 +179,7 @@ const News = ({ language = 'id' }) => {
                     </div>
                   </div>
                   
-                  <button className="text-sampattinaya-accent hover:text-sampattinaya-accent/80 text-sm font-medium transition-colors duration-200 whitespace-nowrap">
+                  <button className="text-[#15C26B] hover:text-[#15C26B]/80 text-sm font-medium transition-colors duration-200 whitespace-nowrap">
                     {currentContent.readMore} →
                   </button>
                 </div>
@@ -194,7 +194,7 @@ const News = ({ language = 'id' }) => {
         <button 
           className={`
             px-6 py-3 rounded-lg font-medium transition-all duration-200
-            bg-gray-900 border border-gray-700 hover:border-gray-600 text-white
+            bg-[#171717] border border-[#404040] hover:border-[#15C26B] text-white
             hover:shadow-md hover:-translate-y-0.5
           `}
         >

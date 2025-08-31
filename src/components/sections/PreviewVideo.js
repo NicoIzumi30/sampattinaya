@@ -87,7 +87,7 @@ const PreviewVideo = ({ language = 'id' }) => {
           <div className={`transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-4">
               {currentContent.title}
-              <span className="text-sampattinaya-accent"> {currentContent.subtitle}</span>
+              <span className="text-[#15C26B]"> {currentContent.subtitle}</span>
             </h2>
           </div>
           
@@ -109,7 +109,7 @@ const PreviewVideo = ({ language = 'id' }) => {
                   text-gray-400
                 `}
               >
-                <div className="w-2 h-2 bg-sampattinaya-accent rounded-full"></div>
+                <div className="w-2 h-2 bg-[#15C26B] rounded-full"></div>
                 <span>{feature}</span>
               </div>
             ))}
@@ -121,15 +121,15 @@ const PreviewVideo = ({ language = 'id' }) => {
           ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'}
         `}>
           {/* Video wrapper with border and shadow */}
-          <div className={`relative rounded-2xl overflow-hidden border-2 transition-all duration-500 border-gray-800 bg-gray-900 shadow-2xl shadow-gray-900/50
+          <div className={`relative rounded-2xl overflow-hidden border-2 transition-all duration-500 border-[#404040] bg-[#171717] shadow-2xl shadow-black/50
             ${isVisible ? 'hover:shadow-3xl hover:scale-[1.02]' : ''}
           `}>
             
             {/* Loading State */}
             {isLoading && !hasError && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-sampattinaya-accent/10 to-sampattinaya-accent/5 z-10">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#15C26B]/10 to-[#15C26B]/5 z-10">
                 <div className="flex flex-col items-center space-y-4">
-                  <div className="w-12 h-12 border-4 border-sampattinaya-accent border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-12 h-12 border-4 border-[#15C26B] border-t-transparent rounded-full animate-spin"></div>
                   <p className="text-sm text-gray-400">
                     Loading preview...
                   </p>
@@ -139,9 +139,9 @@ const PreviewVideo = ({ language = 'id' }) => {
 
             {/* Error State */}
             {hasError && (
-              <div className="aspect-video flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+              <div className="aspect-video flex items-center justify-center bg-gradient-to-br from-[#171717] to-[#121212]">
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-gray-700">
+                  <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-[#404040]">
                     <svg className="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
@@ -198,11 +198,11 @@ const PreviewVideo = ({ language = 'id' }) => {
           ${isVisible ? 'opacity-100' : 'opacity-0'}
         `}>
           <div className="flex items-center space-x-3">
-            <div className="w-2 h-2 bg-sampattinaya-accent rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-[#15C26B] rounded-full animate-pulse"></div>
             <span className="text-xs uppercase tracking-wide text-gray-500">
               Interactive Demo
             </span>
-            <div className="w-2 h-2 bg-sampattinaya-accent/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="w-2 h-2 bg-[#15C26B]/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
           </div>
         </div>
       </div>

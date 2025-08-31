@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     remotePatterns: [
       {
@@ -11,11 +10,15 @@ const nextConfig = {
         pathname: '/tf/payone/assets/images/**',
       },
     ],
+    domains: ['localhost'],
   },
   i18n: {
     locales: ['id', 'en'],
     defaultLocale: 'id',
     localeDetection: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 }
 

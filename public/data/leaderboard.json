@@ -1,0 +1,82 @@
+[
+  { 
+    "rank": 1, 
+    "userId": "u_01", 
+    "name": "Alya", 
+    "avatarUrl": "/assets/u/alya.png", 
+    "score": 9870, 
+    "updatedAt": "2025-08-20T07:12:00Z" 
+  },
+  { 
+    "rank": 2, 
+    "userId": "u_02", 
+    "name": "Raka", 
+    "avatarUrl": "/assets/u/raka.png", 
+    "score": 9730, 
+    "updatedAt": "2025-08-22T09:01:00Z" 
+  },
+  { 
+    "rank": 3, 
+    "userId": "u_03", 
+    "name": "Sinta", 
+    "avatarUrl": "/assets/u/sinta.png", 
+    "score": 9650, 
+    "updatedAt": "2025-08-21T14:30:00Z" 
+  },
+  { 
+    "rank": 4, 
+    "userId": "u_04", 
+    "name": "Budi", 
+    "avatarUrl": "/assets/u/budi.png", 
+    "score": 9540, 
+    "updatedAt": "2025-08-20T16:45:00Z" 
+  },
+  { 
+    "rank": 5, 
+    "userId": "u_05", 
+    "name": "Intan", 
+    "avatarUrl": "/assets/u/intan.png", 
+    "score": 9420, 
+    "updatedAt": "2025-08-23T08:20:00Z" 
+  },
+  { 
+    "rank": 6, 
+    "userId": "u_06", 
+    "name": "Dedi", 
+    "avatarUrl": "/assets/u/dedi.png", 
+    "score": 9350, 
+    "updatedAt": "2025-08-21T11:15:00Z" 
+  },
+  { 
+    "rank": 7, 
+    "userId": "u_07", 
+    "name": "Eka", 
+    "avatarUrl": "/assets/u/eka.png", 
+    "score": 9280, 
+    "updatedAt": "2025-08-22T13:40:00Z" 
+  },
+  { 
+    "rank": 8, 
+    "userId": "u_08", 
+    "name": "Fajar", 
+    "avatarUrl": "/assets/u/fajar.png", 
+    "score": 9150, 
+    "updatedAt": "2025-08-20T19:55:00Z" 
+  },
+  { 
+    "rank": 9, 
+    "userId": "u_09", 
+    "name": "Gita", 
+    "avatarUrl": "/assets/u/gita.png", 
+    "score": 9080, 
+    "updatedAt": "2025-08-23T15:25:00Z" 
+  },
+  { 
+    "rank": 10, 
+    "userId": "u_10", 
+    "name": "Hadi", 
+    "avatarUrl": "/assets/u/hadi.png", 
+    "score": 8990, 
+    "updatedAt": "2025-08-21T20:10:00Z" 
+  }
+]

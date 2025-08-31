@@ -224,11 +224,11 @@ const Testimonials = ({ language = 'id' }) => {
 
   // Testimonial Card Component
   const TestimonialCard = ({ testimonial }) => (
-    <div className={`flex-shrink-0 w-96 p-8 mx-4 rounded-xl border transition-all duration-300 bg-gray-900 border-gray-800 hover:border-gray-700
+    <div className={`flex-shrink-0 w-96 p-8 mx-4 rounded-xl border transition-all duration-300 bg-[#171717] border-[#404040] hover:border-[#15C26B]
       shadow-lg hover:shadow-xl
     `}>
       <div className="flex items-center space-x-4 mb-6">
-        <div className="w-10 h-10 rounded-full bg-sampattinaya-accent flex items-center justify-center text-white font-bold">
+        <div className="w-10 h-10 rounded-full bg-[#15C26B] flex items-center justify-center text-white font-bold">
           {testimonial.avatar}
         </div>
         <div>
@@ -242,10 +242,10 @@ const Testimonials = ({ language = 'id' }) => {
       </div>
       
       <p className="leading-relaxed mb-4 text-gray-300">
-        "{testimonial.text}"
+        &ldquo;{testimonial.text}&rdquo;
       </p>
       
-      <div className="text-sm text-sampattinaya-accent font-medium">
+      <div className="text-sm text-[#15C26B] font-medium">
         {testimonial.role}
       </div>
     </div>

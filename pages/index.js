@@ -19,7 +19,7 @@ import ProblemsAndSolutions from '@/components/sections/ProblemsAndSolutions';
 import Testimonials from '@/components/sections/Testimonials';
 import News from '@/components/sections/News';
 import CTA from '@/components/sections/CTA';
-import Footer from '@/components/sections/Footer';
+import MainLayout from '@/components/layout/MainLayout';
 import {
   Menu,
   X,
@@ -44,8 +44,6 @@ import {
 } from 'lucide-react';
 
 export default function HomePage() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [language, setLanguage] = useState('id');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
@@ -145,20 +143,13 @@ export default function HomePage() {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const currentContent = content[language] || content.id;
   const featureIcons = [BookOpen, Brain, Calculator, Target, Trophy, Shield];
 
   return (
-    <>
+    <MainLayout>
       <Head>
         <title>SampattiNaya — Belajar Keuangan Lebih Mudah</title>
         <meta name="description" content="Platform literasi finansial dengan modul ringkas, simulasi interaktif, dan pengalaman modern ala Supabase." />
@@ -166,96 +157,32 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen dark bg-sampattinaya-dark-bg text-sampattinaya-dark-text">
-        {/* Navigation */}
-        <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled
-          ? 'bg-sampattinaya-dark-bg/95 backdrop-blur-xl border-b border-sampattinaya-dark-muted'
-          : 'bg-transparent'
-          }`}>
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'h-16 py-3' : 'h-20 py-4'}`}>
-              {/* Logo */}
-              <div className="flex items-center">
-                <div className="flex-shrink-0 flex items-center space-x-2">
-                  <span className={`font-bold transition-all duration-500 ${isScrolled ? 'text-lg' : 'text-xl'}`}>SampattiNaya</span>
-                </div>
-              </div>
-
-              {/* Center Navigation Links */}
-              <div className="hidden lg:flex items-center justify-center flex-1">
-                <div className={`flex items-center transition-all duration-500 ${isScrolled ? 'space-x-6' : 'space-x-8'}`}>
-                  {currentContent.nav.links.map((link, index) => (
-                    <a key={index} href="#" className={`hover:text-sampattinaya-accent transition-all duration-300 font-medium ${isScrolled ? 'text-sm' : 'text-base'}`}>
-                      {link}
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Side Actions */}
-              <div className={`flex items-center transition-all duration-500 ${isScrolled ? 'space-x-2' : 'space-x-3'}`}>
-                {/* Language Dropdown */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="transition-all duration-500 hidden sm:flex">
-                      <Globe className={`mr-1 transition-all duration-500 ${isScrolled ? 'w-3 h-3' : 'w-4 h-4'}`} />
-                      <span className={`transition-all duration-500 ${isScrolled ? 'text-xs' : 'text-sm'}`}>{language.toUpperCase()}</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem onClick={() => setLanguage('id')}>
-                      Indonesian
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setLanguage('en')}>
-                      English
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-
-                <Button
-                  className={`bg-sampattinaya-accent hover:opacity-90 text-white transition-all duration-500 rounded-full ${
-                    isScrolled ? 'text-xs px-4 py-2 h-8' : 'text-sm px-6 py-2 h-10'
-                  }`}
-                >
-                  {currentContent.nav.cta}
-                </Button>
-
-                {/* Mobile menu button */}
-                <div className="lg:hidden">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  >
-                    {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
 
         {/* Hero Section */}
         <section className="py-16 lg:pt-40 pt-32 px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7 space-y-8">
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                   {currentContent.hero.headline}
                 </h1>
 
-                <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl">
+                <p className="text-lg lg:text-xl text-gray-400 max-w-2xl">
                   {currentContent.hero.subcopy}
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-sampattinaya-accent hover:opacity-90 text-white">
-                  {currentContent.hero.ctas[0]}
-                </Button>
-                <Button size="lg" variant="outline">
-                  {currentContent.hero.ctas[1]}
-                </Button>
+                <a href="/auth/register">
+                  <Button size="lg" className="bg-[#15C26B] hover:bg-[#10A558] text-white w-full sm:w-auto">
+                    {currentContent.hero.ctas[0]}
+                  </Button>
+                </a>
+                <a href="/leaderboard">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto border-[#404040] text-white hover:border-[#15C26B]">
+                    {currentContent.hero.ctas[1]}
+                  </Button>
+                </a>
               </div>
 
             </div>
@@ -416,9 +343,6 @@ export default function HomePage() {
 
         <Separator />
 
-        {/* Footer */}
-        <Footer language={language} />
-
         {/* Floating Chat */}
         <Dialog open={isChatOpen} onOpenChange={setIsChatOpen}>
           <DialogTrigger asChild>
@@ -458,7 +382,6 @@ export default function HomePage() {
             </div>
           </DialogContent>
         </Dialog>
-      </div>
-    </>
+    </MainLayout>
   );
 }

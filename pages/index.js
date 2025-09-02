@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -285,10 +286,13 @@ export default function HomePage() {
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto w-fit">
                 <div className="absolute inset-0 sampattinaya-gradient-bg rounded-full blur-3xl scale-110"></div>
-                <img
-                  src="images/mockup.png"
+                <Image
+                  src="/images/mockup.png"
                   alt="sampattinaya dashboard"
+                  width={600}
+                  height={400}
                   className="relative z-10 w-xs md:w-md lg:w-lg mx-auto"
+                  priority
                 />
               </div>
             </div>
@@ -298,61 +302,61 @@ export default function HomePage() {
               {/* First marquee group */}
               <div className="gap-4 lg:gap-8 flex flex-nowrap w-fit animate-[marquee_90000ms_linear_both_infinite] will-change-transform motion-reduce:animate-none motion-reduce:will-change-none">
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/mozilla.svg" alt="mozilla" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/mozilla.svg" alt="mozilla" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/github.svg" alt="github" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/github.svg" alt="github" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/1password.svg" alt="1password" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/1password.svg" alt="1password" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/pwc.svg" alt="pwc" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/pwc.svg" alt="pwc" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/pika.svg" alt="pika" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/pika.svg" alt="pika" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/humata.svg" alt="humata" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/humata.svg" alt="humata" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/udio.svg" alt="udio" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/udio.svg" alt="udio" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/langchain.svg" alt="langchain" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/langchain.svg" alt="langchain" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/resend.svg" alt="resend" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/resend.svg" alt="resend" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
               </div>
               {/* Second marquee group (duplicate for seamless loop) */}
               <div className="gap-4 lg:gap-8 flex flex-nowrap w-fit animate-[marquee_90000ms_linear_both_infinite] will-change-transform motion-reduce:animate-none motion-reduce:will-change-none">
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/mozilla.svg" alt="mozilla" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/mozilla.svg" alt="mozilla" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/github.svg" alt="github" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/github.svg" alt="github" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/1password.svg" alt="1password" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/1password.svg" alt="1password" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/pwc.svg" alt="pwc" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/pwc.svg" alt="pwc" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/pika.svg" alt="pika" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/pika.svg" alt="pika" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/humata.svg" alt="humata" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/humata.svg" alt="humata" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/udio.svg" alt="udio" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/udio.svg" alt="udio" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/langchain.svg" alt="langchain" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/langchain.svg" alt="langchain" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
                 <div className="h-12 lg:h-12 w-max !inline-block">
-                  <img src="https://supabase.com/images/logos/publicity/resend.svg" alt="resend" className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" draggable="false" />
+                  <Image src="/logo/resend.svg" alt="resend" width={48} height={48} className="h-12 lg:h-12 !min-h-12 lg:!min-h-12 w-auto block" />
                 </div>
               </div>
             </div>

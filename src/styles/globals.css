@@ -2,6 +2,51 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Performance optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Loading states */
+.page-loading {
+  cursor: wait;
+}
+
+.page-loading * {
+  pointer-events: none;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.animate-pulse,
+.animate-spin,
+.animate-bounce {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize scroll performance */
+.overflow-auto,
+.overflow-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
 :root {
   --font-inter: 'Inter', Helvetica, sans-serif;
   --font-albert-sans: 'Albert Sans', Helvetica, sans-serif;

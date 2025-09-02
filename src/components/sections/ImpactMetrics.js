@@ -11,21 +11,21 @@ const ImpactMetrics = ({ language = 'id' }) => {
       stats: [
         { 
           id: 'users',
-          value: 1200, 
+          value: 2450, 
           suffix: '+',
-          label: 'orang telah mencoba modul pembelajaran'
+          label: 'total skor pembelajaran yang telah dicapai pengguna'
+        },
+        { 
+          id: 'modules',
+          value: 12, 
+          suffix: ' modul',
+          label: 'pembelajaran terstruktur dari pemula hingga mahir'
         },
         { 
           id: 'success',
-          value: 73, 
+          value: 85, 
           suffix: '%',
-          label: 'berhasil menyisihkan dana darurat pertama dalam 1 bulan'
-        },
-        { 
-          id: 'time',
-          value: 30, 
-          suffix: ' detik',
-          label: 'rata-rata waktu cek kesehatan finansial'
+          label: 'pengguna berhasil menyelesaikan kuis dan simulasi'
         }
       ]
     },
@@ -33,21 +33,21 @@ const ImpactMetrics = ({ language = 'id' }) => {
       stats: [
         { 
           id: 'users',
-          value: 1200, 
+          value: 2450, 
           suffix: '+',
-          label: 'people have tried our learning modules'
+          label: 'total learning score achieved by users'
+        },
+        { 
+          id: 'modules',
+          value: 12, 
+          suffix: ' modules',
+          label: 'structured learning from beginner to advanced'
         },
         { 
           id: 'success',
-          value: 73, 
+          value: 85, 
           suffix: '%',
-          label: 'successfully saved their first emergency fund in 1 month'
-        },
-        { 
-          id: 'time',
-          value: 30, 
-          suffix: ' seconds',
-          label: 'average time for financial health check'
+          label: 'users successfully completed quizzes and simulations'
         }
       ]
     }

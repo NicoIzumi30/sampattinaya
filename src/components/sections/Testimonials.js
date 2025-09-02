@@ -15,42 +15,42 @@ const Testimonials = ({ language = 'id' }) => {
             name: 'Sarah K.',
             username: '@sarah_student',
             role: 'Mahasiswa',
-            text: 'Simulasinya membuka mata soal kebocoran pengeluaran. Sekarang bisa nabung 500rb setiap bulan!',
+            text: 'Simulasi budget 50/30/20 sangat membantu! Sekarang pengeluaran terkontrol dan bisa nabung 500rb setiap bulan.',
             avatar: 'S'
           },
           {
             name: 'Ahmad M.',
             username: '@ahmad_worker',
             role: 'Pekerja',
-            text: 'AI Mentornya membantu menyusun rencana 30 hari yang realistis. Dana darurat udah terkumpul 50%.',
+            text: 'AI Chat Assistant membantu merencanakan keuangan personal. Total skor saya sudah 2450 poin!',
             avatar: 'A'
           },
           {
             name: 'Rita S.',
             username: '@rita_mom',
             role: 'Ibu Rumah Tangga',
-            text: 'Bagian keamanan digitalnya sangat bermanfaat. Hampir ketipu investasi bodong, untung cek dulu di sini.',
+            text: 'Modul pembelajaran mudah dipahami. Dari 12 modul, sudah selesai 8 dan progress terus meningkat.',
             avatar: 'R'
           },
           {
             name: 'Budi P.',
             username: '@budi_trader',
             role: 'Trader',
-            text: 'Platform pembelajaran yang paling mudah dipahami. Cocok banget buat pemula kayak dulu.',
+            text: 'Kuis interaktif sangat menantang! Sudah menyelesaikan 15 dari 18 kuis dengan skor 83%.',
             avatar: 'B'
           },
           {
             name: 'Maya L.',
             username: '@maya_designer',
             role: 'Designer',
-            text: 'Goal plannernya keren! Target liburan ke Jepang jadi lebih terarah dan realistis.',
+            text: 'Dashboard tracking progress sangat memotivasi. Bisa lihat perkembangan dari pemula sampai mahir.',
             avatar: 'M'
           },
           {
             name: 'Andi T.',
             username: '@andi_dev',
             role: 'Developer',
-            text: 'Fitur anti-scam checker menyelamatkan saya dari kerugian jutaan rupiah. Thanks sampattinaya!',
+            text: 'Fitur simulasi budget membantu evaluasi pengeluaran bulanan. Sekarang lebih terstruktur!',
             avatar: 'A'
           }
         ],
@@ -60,42 +60,42 @@ const Testimonials = ({ language = 'id' }) => {
             name: 'Sari W.',
             username: '@sari_teacher',
             role: 'Guru',
-            text: 'Setelah pakai sampattinaya, anak-anak jadi lebih paham konsep menabung dan investasi dasar.',
+            text: 'Learning modules sangat terstruktur dari pemula hingga lanjutan. Mudah dipahami dan aplikatif.',
             avatar: 'S'
           },
           {
             name: 'Doni R.',
             username: '@doni_entrepreneur',
             role: 'Pengusaha',
-            text: 'Kalkulator cicilan sangat membantu evaluasi cash flow bisnis. Highly recommended!',
+            text: 'Recent activities tracking membantu monitor progress harian. Motivasi belajar jadi meningkat!',
             avatar: 'D'
           },
           {
             name: 'Lisa F.',
             username: '@lisa_freelancer',
             role: 'Freelancer',
-            text: 'Income tidak tetap jadi tidak masalah lagi. AI Mentor bisa adjust planning sesuai kondisi.',
+            text: 'AI Chat sangat responsif untuk konsultasi keuangan. Seperti punya mentor pribadi 24/7.',
             avatar: 'L'
           },
           {
             name: 'Joko S.',
             username: '@joko_driver',
             role: 'Driver Online',
-            text: 'Simulasi budgetnya simple tapi powerful. Sekarang pengeluaran bulanan terkontrol banget.',
+            text: 'Recommended modules selalu update sesuai progress. Belajar jadi lebih terarah dan efisien.',
             avatar: 'J'
           },
           {
             name: 'Nina K.',
             username: '@nina_nurse',
             role: 'Perawat',
-            text: 'Platform ini mengubah mindset saya tentang uang. Dari boros jadi bisa investment oriented.',
+            text: 'Quick actions di dashboard sangat praktis. Bisa langsung akses learning, kuis, dan simulasi.',
             avatar: 'N'
           },
           {
             name: 'Agus M.',
             username: '@agus_mechanic',
             role: 'Mekanik',
-            text: 'Gampang banget dipahami walau background saya bukan ekonomi. Thanks for making it simple!',
+            text: 'Badge difficulty level membantu pilih modul sesuai kemampuan. Dari pemula sampai lanjutan.',
             avatar: 'A'
           }
         ]

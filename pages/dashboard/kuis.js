@@ -7,18 +7,25 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import DashboardNav from '@/components/common/DashboardNav';
+import { QuizSkeleton } from '@/components/common/SkeletonLoading';
 
 export default function KuisPage() {
   const router = useRouter();
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const userData = localStorage.getItem('sampattinaya_demo_user');
+    const userData = localStorage.getItem('sampattinaya_user');
     if (!userData) {
       router.push('/auth/login');
       return;
     }
-    setUser(JSON.parse(userData));
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      setUser(JSON.parse(userData));
+      setIsLoading(false);
+    }, 700);
   }, [router]);
 
   const quizzes = [
@@ -126,7 +133,8 @@ export default function KuisPage() {
   };
 
   const handleStartQuiz = (quizId) => {
-    alert(`Memulai kuis ${quizId}. Ini adalah demo mode.`);
+    // Redirect ke halaman kuis spesifik
+    router.push(`/dashboard/kuis/${quizId}`);
   };
 
   const completedQuizzes = quizzes.filter(q => q.status === 'completed');
@@ -134,10 +142,15 @@ export default function KuisPage() {
     ? completedQuizzes.reduce((sum, q) => sum + q.score, 0) / completedQuizzes.length 
     : 0;
 
-  if (!user) {
+  if (isLoading || !user) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="min-h-screen bg-background">
+        <DashboardNav />
+        <main className="md:ml-64 pt-16 pb-20 md:pb-8">
+          <div className="container mx-auto px-4 py-6 max-w-6xl">
+            <QuizSkeleton />
+          </div>
+        </main>
       </div>
     );
   }
@@ -303,3 +316,4 @@ export default function KuisPage() {
     </>
   );
 }
+

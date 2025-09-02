@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { BookOpen, Brain, Calculator, Target, Trophy, Shield, HelpCircle } from 'lucide-react';
+import OptimizedImage from '@/components/common/OptimizedImage';
+import LazyLoad from '@/components/common/LazyLoad';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
-const Features = ({ language = 'id' }) => {
-  const [isVisible, setIsVisible] = useState(false);
+const Features = memo(({ language = 'id' }) => {
+  const { targetRef, hasIntersected } = useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '100px'
+  });
 
   // Content for different languages
   const content = {
@@ -14,7 +20,7 @@ const Features = ({ language = 'id' }) => {
         {
           title: 'Pembelajaran Interaktif',
           description: 'Modul pembelajaran dengan simulasi real-time dan progress tracking otomatis.',
-          image: '/images/learning.png',
+          image: '/images/learning.jpg',
           alt: 'Screenshot modul pembelajaran interaktif SampattiNaya',
           icon: BookOpen,
           size: 'large'
@@ -22,7 +28,7 @@ const Features = ({ language = 'id' }) => {
         {
           title: 'AI Financial Mentor',
           description: 'Asisten pintar yang memberikan rekomendasi finansial berdasarkan profil dan tujuan Anda.',
-          image: '/images/ai.png',
+          image: '/images/ai.jpg',
           alt: 'Screenshot AI Financial Mentor memberikan rekomendasi',
           icon: Brain,
           size: 'medium'
@@ -38,7 +44,7 @@ const Features = ({ language = 'id' }) => {
         {
           title: 'Kuis Finansial',
           description: 'Uji pemahaman dengan kuis interaktif dan dapatkan skor untuk mengukur progress.',
-          image: '/images/ai.png',
+          image: '/images/ai.jpg',
           alt: 'Screenshot kuis finansial interaktif',
           icon: HelpCircle,
           size: 'small'
@@ -61,7 +67,7 @@ const Features = ({ language = 'id' }) => {
         {
           title: 'Interactive Learning',
           description: 'Learning modules with real-time simulation and automatic progress tracking.',
-          image: '/images/learning.png',
+          image: '/images/learning.jpg',
           alt: 'Screenshot of interactive learning modules',
           icon: BookOpen,
           size: 'large'
@@ -69,7 +75,7 @@ const Features = ({ language = 'id' }) => {
         {
           title: 'AI Financial Mentor',
           description: 'Smart assistant providing financial recommendations based on your profile and goals.',
-          image: '/images/ai.png',
+          image: '/images/ai.jpg',
           alt: 'Screenshot of AI Financial Mentor recommendations',
           icon: Brain,
           size: 'medium'
@@ -85,7 +91,7 @@ const Features = ({ language = 'id' }) => {
         {
           title: 'Financial Quiz',
           description: 'Test your understanding with interactive quizzes and get scores to measure progress.',
-          image: '/images/ai.png',
+          image: '/images/ai.jpg',
           alt: 'Screenshot of interactive financial quiz',
           icon: HelpCircle,
           size: 'small'
@@ -104,43 +110,29 @@ const Features = ({ language = 'id' }) => {
 
   const currentContent = content[language] || content.id;
 
-  // Get bento grid layout classes for 5 cards - compact layout
-  const getBentoClass = (index) => {
-    const patterns = [
-      'col-span-1 md:col-span-2 lg:col-span-2 row-span-2', // Large - top left
-      'col-span-1 md:col-span-1 lg:col-span-1 row-span-2', // Medium - top middle  
-      'col-span-1 md:col-span-1 lg:col-span-1 row-span-2', // Medium - top right
-      'col-span-1 md:col-span-2 lg:col-span-1 row-span-1', // Small - bottom left (spans 2 cols)
-      'col-span-1 md:col-span-2 lg:col-span-1 row-span-1'  // Small - bottom right (spans 2 cols)
-    ];
-    return patterns[index] || patterns[0];
-  };
-
-  // Intersection Observer for animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById('features-section');
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
+      const getBentoClass = (index) => {
+      const patterns = [
+        'col-span-1 md:col-span-4 lg:col-span-4 row-span-2', // Large - top left (4/6 = 2/3 ≈ 3/5)
+        'col-span-1 md:col-span-2 lg:col-span-2 row-span-2', // Medium - top right (2/6 = 1/3 ≈ 2/5)
+        'col-span-1 md:col-span-2 lg:col-span-2 row-span-2', // Small - bottom left (2/6 = 1/3)
+        'col-span-1 md:col-span-2 lg:col-span-2 row-span-2', // Small - bottom center (2/6 = 1/3)
+        'col-span-1 md:col-span-2 lg:col-span-2 row-span-2'  // Small - bottom right (2/6 = 1/3)
+      ];
+      return patterns[index] || patterns[0];
     };
-  }, []);
+
+  // Use intersection observer for visibility
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    if (hasIntersected) {
+      setIsVisible(true);
+    }
+  }, [hasIntersected]);
 
   return (
     <section 
+      ref={targetRef}
       id="features-section" 
       className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8"
     >
@@ -166,8 +158,7 @@ const Features = ({ language = 'id' }) => {
           </p>
         </div>
 
-        {/* Bento Grid Layout - 5 Cards Compact */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 max-w-6xl mx-auto auto-rows-[180px]">
+                  <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-6 max-w-7xl mx-auto auto-rows-[200px]">
           {currentContent.features.map((feature, index) => {
             const IconComponent = feature.icon;
             
@@ -193,24 +184,27 @@ const Features = ({ language = 'id' }) => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed mb-3 flex-1">
+                  <p className="text-gray-400 text-sm leading-relaxed mb-2">
                     {feature.description}
                   </p>
 
-                  {/* Image - Optimized sizing for better proportions */}
-                  <div className="mt-auto rounded-lg border border-[#404040] overflow-hidden bg-[#121212]">
-                    <img
-                      src={feature.image}
-                      alt={feature.alt}
-                      className={`w-full object-cover ${
-                        index === 0 ? 'h-36 lg:h-44' : // Large card - bigger image
-                        index <= 2 ? 'h-32 lg:h-40' : // Medium cards - medium image
-                        'h-28 lg:h-36' // Small cards - larger image for better proportion
-                      }`}
-                      onError={(e) => {
-                        e.target.src = `https://via.placeholder.com/400x240/171717/15C26B?text=${encodeURIComponent(feature.title)}`;
-                      }}
-                    />
+                  {/* Image - Optimized sizing for better proportions dengan height tambahan */}
+                  <div className="rounded-lg border border-[#404040] overflow-hidden bg-[#121212] h-full">
+                    <LazyLoad minHeight={index === 0 ? '240px' : index === 1 ? '192px' : '160px'}>
+                      <OptimizedImage
+                        src={feature.image}
+                        alt={feature.alt}
+                        width={index === 0 ? 600 : index === 1 ? 400 : 300}
+                        height={index === 0 ? 240 : index === 1 ? 192 : 160}
+                        quality={85}
+                        priority={index === 0} // Priority for first image only
+                        className={`w-full object-cover ${
+                          index === 0 ? 'h-60 lg:h-full' : // Extra Large card - much bigger image
+                          index === 1 ? 'h-48 lg:h-64' : // Medium card top right - bigger image
+                          'h-40 lg:h-full' // Small cards bottom - increased height
+                        }`}
+                      />
+                    </LazyLoad>
                   </div>
                 </div>
               </div>
@@ -220,6 +214,6 @@ const Features = ({ language = 'id' }) => {
       </div>
     </section>
   );
-};
+});
 
 export default Features;

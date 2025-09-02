@@ -191,9 +191,9 @@ export default function HomePage() {
               <div className="relative mx-auto w-fit">
                 <div className="absolute inset-0 sampattinaya-gradient-bg rounded-full blur-3xl scale-110"></div>
                 <img
-                  src="https://wowtheme7.com/tf/payone/assets/images/thumbs/mobile-app-img-1.png"
+                  src="images/mockup.png"
                   alt="sampattinaya dashboard"
-                  className="relative z-10 max-w-lg mx-auto"
+                  className="relative z-10 w-xs md:w-md lg:w-lg mx-auto"
                 />
               </div>
             </div>

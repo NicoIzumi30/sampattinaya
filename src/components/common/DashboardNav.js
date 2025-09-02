@@ -85,14 +85,14 @@ export function DesktopSidebar() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userData = localStorage.getItem('sampattinaya_demo_user');
+    const userData = localStorage.getItem('sampattinaya_user');
     if (userData) {
       setUser(JSON.parse(userData));
     }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('sampattinaya_demo_user');
+    localStorage.removeItem('sampattinaya_user');
     router.push('/auth/login');
   };
 
@@ -171,14 +171,14 @@ export function DashboardHeader() {
   const router = useRouter();
 
   useEffect(() => {
-    const userData = localStorage.getItem('sampattinaya_demo_user');
+    const userData = localStorage.getItem('sampattinaya_user');
     if (userData) {
       setUser(JSON.parse(userData));
     }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('sampattinaya_demo_user');
+    localStorage.removeItem('sampattinaya_user');
     router.push('/auth/login');
   };
 
@@ -221,12 +221,13 @@ export function DashboardHeader() {
   );
 }
 
-export default function DashboardNav() {
+export default function DashboardNav({ className = '' }) {
   return (
-    <>
+    <div className={className}>
       <DesktopSidebar />
       <DashboardHeader />
       <MobileBottomNav />
-    </>
+    </div>
   );
 }
+

@@ -7,10 +7,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import DashboardNav from '@/components/common/DashboardNav';
+import { SimulationSkeleton } from '@/components/common/SkeletonLoading';
 
 export default function SimulasiPage() {
   const router = useRouter();
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [budgetData, setBudgetData] = useState({
     income: '',
     needs: '',
@@ -19,13 +21,19 @@ export default function SimulasiPage() {
   });
   const [results, setResults] = useState(null);
 
+
   useEffect(() => {
-    const userData = localStorage.getItem('sampattinaya_demo_user');
+    const userData = localStorage.getItem('sampattinaya_user');
     if (!userData) {
       router.push('/auth/login');
       return;
     }
-    setUser(JSON.parse(userData));
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      setUser(JSON.parse(userData));
+      setIsLoading(false);
+    }, 600);
   }, [router]);
 
   const handleInputChange = (field, value) => {
@@ -107,10 +115,15 @@ export default function SimulasiPage() {
     }).format(amount);
   };
 
-  if (!user) {
+  if (isLoading || !user) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="min-h-screen bg-background">
+        <DashboardNav />
+        <main className="md:ml-64 pt-16 pb-20 md:pb-8">
+          <div className="container mx-auto px-4 py-6 max-w-6xl">
+            <SimulationSkeleton />
+          </div>
+        </main>
       </div>
     );
   }
@@ -138,16 +151,16 @@ export default function SimulasiPage() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Input Form */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Calculator className="h-5 w-5" />
-                    Input Anggaran
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
+            {/* Input Form */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Calculator className="h-5 w-5" />
+                  Input Anggaran
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                   <div className="space-y-2">
                     <Label htmlFor="income">Pendapatan Bulanan</Label>
                     <Input
@@ -164,12 +177,12 @@ export default function SimulasiPage() {
                     <Input
                       id="needs"
                       type="number"
-                      placeholder="Makanan, sewa, transportasi, dll"
+                      placeholder="Makanan, sewa, transportasi"
                       value={budgetData.needs}
                       onChange={(e) => handleInputChange('needs', e.target.value)}
                     />
                     <p className="text-xs text-muted-foreground">
-                      Sewa rumah, listrik, air, makanan pokok, transportasi
+                      Sewa, listrik, air, makanan pokok
                     </p>
                   </div>
 
@@ -178,12 +191,12 @@ export default function SimulasiPage() {
                     <Input
                       id="wants"
                       type="number"
-                      placeholder="Hiburan, makan luar, hobi, dll"
+                      placeholder="Hiburan, makan luar, hobi"
                       value={budgetData.wants}
                       onChange={(e) => handleInputChange('wants', e.target.value)}
                     />
                     <p className="text-xs text-muted-foreground">
-                      Hiburan, makan di luar, shopping, hobi
+                      Hiburan, makan di luar, shopping
                     </p>
                   </div>
 
@@ -192,154 +205,158 @@ export default function SimulasiPage() {
                     <Input
                       id="savings"
                       type="number"
-                      placeholder="Dana darurat, investasi, dll"
+                      placeholder="Dana darurat, investasi"
                       value={budgetData.savings}
                       onChange={(e) => handleInputChange('savings', e.target.value)}
                     />
                     <p className="text-xs text-muted-foreground">
-                      Dana darurat, investasi, tabungan masa depan
+                      Dana darurat, investasi
                     </p>
                   </div>
+                </div>
 
-                  <Button onClick={calculateBudget} className="w-full">
+                <div className="flex justify-center">
+                  <Button onClick={calculateBudget} className="px-8">
+                    <Calculator className="h-4 w-4 mr-2" />
                     Hitung Anggaran
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </CardContent>
+            </Card>
 
-              {/* Results */}
-              <div className="space-y-6">
-                {results && (
-                  <>
-                    {/* Summary */}
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <PieChart className="h-5 w-5" />
-                          Ringkasan Anggaran
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                            <DollarSign className="h-6 w-6 text-blue-600 mx-auto mb-2" />
-                            <div className="text-sm text-muted-foreground">Total Pengeluaran</div>
-                            <div className="font-bold">{formatCurrency(results.total)}</div>
-                          </div>
-                          <div className={`text-center p-3 rounded-lg ${
-                            results.remaining >= 0 
-                              ? 'bg-green-50 dark:bg-green-900/20' 
-                              : 'bg-red-50 dark:bg-red-900/20'
-                          }`}>
-                            <TrendingUp className={`h-6 w-6 mx-auto mb-2 ${
-                              results.remaining >= 0 ? 'text-green-600' : 'text-red-600'
-                            }`} />
-                            <div className="text-sm text-muted-foreground">Sisa</div>
-                            <div className="font-bold">{formatCurrency(results.remaining)}</div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    {/* Percentages */}
-                    <Card>
-                      <CardHeader>
-                        <CardTitle>Persentase Alokasi</CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="space-y-2">
-                          <div className="flex justify-between text-sm">
-                            <span>Kebutuhan Pokok</span>
-                            <span>{results.percentages.needs.toFixed(1)}%</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div 
-                              className="bg-blue-600 h-2 rounded-full"
-                              style={{width: `${Math.min(results.percentages.needs, 100)}%`}}
-                            ></div>
-                          </div>
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <div className="flex justify-between text-sm">
-                            <span>Keinginan</span>
-                            <span>{results.percentages.wants.toFixed(1)}%</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div 
-                              className="bg-purple-600 h-2 rounded-full"
-                              style={{width: `${Math.min(results.percentages.wants, 100)}%`}}
-                            ></div>
-                          </div>
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <div className="flex justify-between text-sm">
-                            <span>Tabungan & Investasi</span>
-                            <span>{results.percentages.savings.toFixed(1)}%</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div 
-                              className="bg-green-600 h-2 rounded-full"
-                              style={{width: `${Math.min(results.percentages.savings, 100)}%`}}
-                            ></div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    {/* Recommendations */}
-                    {results.recommendations.length > 0 && (
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>Rekomendasi</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          {results.recommendations.map((rec, index) => (
-                            <div 
-                              key={index}
-                              className={`p-3 rounded-lg text-sm ${
-                                rec.type === 'success' 
-                                  ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800'
-                                  : rec.type === 'warning'
-                                  ? 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 border border-yellow-200 dark:border-yellow-800'
-                                  : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800'
-                              }`}
-                            >
-                              {rec.message}
-                            </div>
-                          ))}
-                        </CardContent>
-                      </Card>
-                    )}
-                  </>
-                )}
-
-                {/* Budget Rule Info */}
+            {/* Results */}
+            {results && (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                {/* Summary */}
                 <Card>
                   <CardHeader>
-                    <CardTitle>Aturan 50/30/20</CardTitle>
+                    <CardTitle className="flex items-center gap-2">
+                      <PieChart className="h-5 w-5" />
+                      Ringkasan Anggaran
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                      <span><strong>50% Kebutuhan:</strong> Pengeluaran wajib seperti sewa, makanan, transportasi</span>
+                  <CardContent className="space-y-4">
+                    <div className="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                      <DollarSign className="h-6 w-6 text-blue-600 mx-auto mb-2" />
+                      <div className="text-sm text-muted-foreground">Total Pengeluaran</div>
+                      <div className="font-bold">{formatCurrency(results.total)}</div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-purple-600 rounded-full"></div>
-                      <span><strong>30% Keinginan:</strong> Hiburan, hobi, dan pengeluaran tidak wajib</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-                      <span><strong>20% Tabungan:</strong> Dana darurat, investasi, dan tabungan masa depan</span>
+                    <div className={`text-center p-3 rounded-lg ${
+                      results.remaining >= 0 
+                        ? 'bg-green-50 dark:bg-green-900/20' 
+                        : 'bg-red-50 dark:bg-red-900/20'
+                    }`}>
+                      <TrendingUp className={`h-6 w-6 mx-auto mb-2 ${
+                        results.remaining >= 0 ? 'text-green-600' : 'text-red-600'
+                      }`} />
+                      <div className="text-sm text-muted-foreground">Sisa</div>
+                      <div className="font-bold">{formatCurrency(results.remaining)}</div>
                     </div>
                   </CardContent>
                 </Card>
+
+                {/* Percentages */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Persentase Alokasi</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>Kebutuhan Pokok</span>
+                        <span>{results.percentages.needs.toFixed(1)}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="bg-blue-600 h-2 rounded-full"
+                          style={{width: `${Math.min(results.percentages.needs, 100)}%`}}
+                        ></div>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>Keinginan</span>
+                        <span>{results.percentages.wants.toFixed(1)}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="bg-purple-600 h-2 rounded-full"
+                          style={{width: `${Math.min(results.percentages.wants, 100)}%`}}
+                        ></div>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>Tabungan & Investasi</span>
+                        <span>{results.percentages.savings.toFixed(1)}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="bg-green-600 h-2 rounded-full"
+                          style={{width: `${Math.min(results.percentages.savings, 100)}%`}}
+                        ></div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Recommendations */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Rekomendasi</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    {results.recommendations.length > 0 ? (
+                      results.recommendations.map((rec, index) => (
+                        <div 
+                          key={index}
+                          className={`p-3 rounded-lg text-sm ${
+                            rec.type === 'success' 
+                              ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800'
+                              : rec.type === 'warning'
+                              ? 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 border border-yellow-200 dark:border-yellow-800'
+                              : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800'
+                          }`}
+                        >
+                          {rec.message}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-sm text-muted-foreground text-center py-4">
+                        Masukkan data anggaran untuk mendapat rekomendasi
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
               </div>
-            </div>
+            )}
+
+            {/* Budget Rule Info */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Aturan 50/30/20</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+                  <span><strong>50% Kebutuhan:</strong> Pengeluaran wajib seperti sewa, makanan, transportasi</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-purple-600 rounded-full"></div>
+                  <span><strong>30% Keinginan:</strong> Hiburan, hobi, dan pengeluaran tidak wajib</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-green-600 rounded-full"></div>
+                  <span><strong>20% Tabungan:</strong> Dana darurat, investasi, dan tabungan masa depan</span>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </main>
       </div>
     </>
   );
 }
+

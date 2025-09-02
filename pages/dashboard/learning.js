@@ -7,18 +7,25 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import DashboardNav from '@/components/common/DashboardNav';
+import { LearningSkeleton } from '@/components/common/SkeletonLoading';
 
 export default function LearningPage() {
   const router = useRouter();
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const userData = localStorage.getItem('sampattinaya_demo_user');
+    const userData = localStorage.getItem('sampattinaya_user');
     if (!userData) {
       router.push('/auth/login');
       return;
     }
-    setUser(JSON.parse(userData));
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      setUser(JSON.parse(userData));
+      setIsLoading(false);
+    }, 800);
   }, [router]);
 
   const modules = [
@@ -31,7 +38,8 @@ export default function LearningPage() {
       progress: 100,
       status: "completed",
       lessons: 5,
-      rating: 4.8
+      rating: 4.8,
+
     },
     {
       id: 2,
@@ -40,9 +48,10 @@ export default function LearningPage() {
       duration: "45 min",
       difficulty: "Pemula", 
       progress: 75,
-      status: "in_progress",
+      status: "in_progress", 
       lessons: 6,
-      rating: 4.9
+      rating: 4.9,
+
     },
     {
       id: 3,
@@ -130,13 +139,21 @@ export default function LearningPage() {
   };
 
   const handleStartModule = (moduleId) => {
-    alert(`Memulai modul ${moduleId}. Ini adalah demo mode.`);
+    const module = modules.find(m => m.id === moduleId);
+    if (module && module.status !== 'locked') {
+      router.push(`/dashboard/learning/${moduleId}`);
+    }
   };
 
-  if (!user) {
+  if (isLoading || !user) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="min-h-screen bg-background">
+        <DashboardNav />
+        <main className="md:ml-64 pt-16 pb-20 md:pb-8">
+          <div className="container mx-auto px-4 py-6 max-w-6xl">
+            <LearningSkeleton />
+          </div>
+        </main>
       </div>
     );
   }
@@ -261,7 +278,10 @@ export default function LearningPage() {
             </div>
           </div>
         </main>
+
+
       </div>
     </>
   );
 }
+

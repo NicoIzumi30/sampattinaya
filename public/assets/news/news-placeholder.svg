@@ -12,3 +12,4 @@
   <circle cx="200" cy="125" r="30" fill="#15C26B" opacity="0.2"/>
   <text x="200" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#15C26B">$</text>
 </svg>
+

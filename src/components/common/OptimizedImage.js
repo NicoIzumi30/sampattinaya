@@ -6,6 +6,7 @@ const OptimizedImage = ({
   alt, 
   width, 
   height, 
+  fill,
   className = '', 
   priority = false,
   quality = 75,
@@ -58,12 +59,11 @@ const OptimizedImage = ({
       <Image
         src={src}
         alt={alt}
-        width={width}
-        height={height}
+        {...(fill ? { fill } : { width, height })}
         quality={quality}
         priority={priority}
-        placeholder={placeholder}
-        blurDataURL={blurDataURL || defaultBlurDataURL}
+        placeholder={fill ? "empty" : placeholder}
+        blurDataURL={!fill ? (blurDataURL || defaultBlurDataURL) : undefined}
         onLoad={handleLoadingComplete}
         onError={handleError}
         className={`transition-opacity duration-300 ${

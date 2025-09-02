@@ -546,7 +546,7 @@ cat > src/i18n/en.json << 'EOF'
   },
   "hero": {
     "kicker": "Financial Literacy Platform", 
-    "headline": "One platform, countless opportunities—improve your financial literacy today.",
+    "headline": "One platform, countless opportunities improve your financial literacy today.",
     "subcopy": "Student, young professional, parent, or small business owner? sampattinaya helps you grasp the basics, plan clearly, and practice through interactive simulations.",
     "ctas": ["Start Learning", "View Leaderboard"],
     "trust": ["Free", "Secure login", "Financial health check < 30s"]

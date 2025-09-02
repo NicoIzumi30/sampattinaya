@@ -102,9 +102,6 @@ export function DesktopSidebar() {
         {/* Logo */}
         <div className="flex items-center h-16 px-4 border-b border-border">
           <Link href="/" className="flex items-center">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">S</span>
-            </div>
             <span className="ml-2 text-lg font-semibold">SampattiNaya</span>
           </Link>
         </div>

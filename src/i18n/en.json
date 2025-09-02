@@ -5,9 +5,60 @@
   },
   "hero": {
     "kicker": "Financial Literacy Platform", 
-    "headline": "One platform, countless opportunities—improve your financial literacy today.",
-    "subcopy": "Student, young professional, parent, or small business owner? sampattinaya helps you grasp the basics, plan clearly, and practice through interactive simulations.",
+    "headline": "One platform, countless opportunities improve your financial literacy today.",
+    "subcopy": "Student, young professional, parent, or small business owner? SampattiNaya helps you grasp the basics, plan clearly, and practice through interactive simulations.",
     "ctas": ["Start Learning", "View Leaderboard"],
     "trust": ["Free", "Secure login", "Financial health check < 30s"]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about SampattiNaya",
+    "faqs": [
+      {
+        "question": "What is SampattiNaya?",
+        "answer": "SampattiNaya is a financial literacy learning platform that helps you manage your finances better through interactive simulations, quizzes, and practical guides."
+      },
+      {
+        "question": "Is SampattiNaya free?",
+        "answer": "Yes, SampattiNaya can be used for free with basic features. We also provide premium features for a more in-depth learning experience."
+      },
+      {
+        "question": "Who can use SampattiNaya?",
+        "answer": "SampattiNaya is designed for everyone - students, young professionals, parents, and small business owners who want to improve their financial literacy."
+      },
+      {
+        "question": "How do I start learning on SampattiNaya?",
+        "answer": "Simply register for a free account, take an initial assessment test to know your level, then start with learning modules that suit your needs."
+      },
+      {
+        "question": "Is my data safe on SampattiNaya?",
+        "answer": "Yes, your data security is our top priority. We use enterprise-level encryption and never share your personal information with third parties."
+      },
+      {
+        "question": "How does the leaderboard system work?",
+        "answer": "The leaderboard system is based on points you collect from completing quizzes, simulations, and other learning activities. The more actively you learn, the higher your ranking."
+      }
+    ]
+  },
+  "footer": {
+    "description": "A financial literacy learning platform that helps you manage your finances better through simulations, quizzes, and practical guides.",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "contact": "Contact",
+    "quickLinks": [
+      { "href": "/", "label": "Home" },
+      { "href": "#about-section", "label": "About" },
+      { "href": "#features-section", "label": "Features" },
+      { "href": "/leaderboard", "label": "Leaderboard" },
+      { "href": "/news", "label": "News" }
+    ],
+    "legalLinks": [
+      { "href": "/privacy", "label": "Privacy Policy" },
+      { "href": "/terms", "label": "Terms & Conditions" },
+      { "href": "/help", "label": "Help" },
+      { "href": "/contact", "label": "Contact" }
+    ],
+    "copyright": "All rights reserved.",
+    "madeWith": "Made with ❤️ for financial literacy"
   }
 }

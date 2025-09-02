@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock } from 'lucide-react';
+import Link from 'next/link';
 
 const News = ({ language = 'id' }) => {
   const [visibleItems, setVisibleItems] = useState([]);
@@ -13,27 +14,27 @@ const News = ({ language = 'id' }) => {
       newsItems: [
         {
           id: 1,
+          slug: 'tips-anggaran-30-50-20',
           title: 'Strategi Mengelola Keuangan di Era Digital',
           excerpt: 'Pelajari cara memanfaatkan teknologi untuk mengelola keuangan pribadi dengan lebih efektif dan aman.',
-          image: 'https://awsimages.detik.net.id/visual/2024/09/30/dok-agung-sedayu-grup_43.jpeg?w=200&q=90',
-          date: '30 September 2024',
-          readTime: '5 menit'
+          image: 'images/loremipsum.jpg',
+          date: '30 Agustus 2025',
         },
         {
           id: 2,
+          slug: 'memulai-investasi-untuk-pemula',
           title: 'Tips Belanja Hemat Tanpa Mengurangi Kualitas',
           excerpt: 'Strategi belanja cerdas yang membantu menghemat pengeluaran bulanan tanpa mengorbankan kebutuhan penting.',
-          image: 'https://awsimages.detik.net.id/visual/2024/03/24/pesta-diskon-koper-murah-di-transmart-fullday-sale-transmart-graha-raya-bintaro-minggu-2432024_43.jpeg?w=200&q=90',
-          date: '24 Maret 2024',
-          readTime: '7 menit'
+          image: 'images/loremipsum.jpg',
+          date: '24 Agustus 2025',
         },
         {
           id: 3,
+          slug: 'mengelola-keuangan-keluarga',
           title: 'Sejarah dan Evolusi Sistem Keuangan Indonesia',
           excerpt: 'Memahami perkembangan sistem finansial Indonesia dari masa ke masa untuk perspektif yang lebih luas.',
-          image: 'https://awsimages.detik.net.id/visual/2023/12/01/jacobus-hubertus-menten-1833-1920-dok-jph-poleyeroica_43.jpeg?w=200&q=90',
-          date: '1 Desember 2023',
-          readTime: '10 menit'
+          image: 'images/loremipsum.jpg',
+          date: '1 Juli 2025',
         }
       ]
     },
@@ -45,26 +46,28 @@ const News = ({ language = 'id' }) => {
       newsItems: [
         {
           id: 1,
+          slug: 'tips-anggaran-30-50-20',
           title: 'Digital Era Financial Management Strategies',
           excerpt: 'Learn how to leverage technology to manage personal finances more effectively and securely.',
-          image: 'https://awsimages.detik.net.id/visual/2024/09/30/dok-agung-sedayu-grup_43.jpeg?w=200&q=90',
-          date: 'September 30, 2024',
-          readTime: '5 min'
+          image: 'images/loremipsum.jpg',
+          date: 'August 30, 2025',
         },
         {
           id: 2,
+          slug: 'memulai-investasi-untuk-pemula',
           title: 'Smart Shopping Tips Without Compromising Quality',
           excerpt: 'Smart shopping strategies that help save monthly expenses without sacrificing important needs.',
-          image: 'https://awsimages.detik.net.id/visual/2024/03/24/pesta-diskon-koper-murah-di-transmart-fullday-sale-transmart-graha-raya-bintaro-minggu-2432024_43.jpeg?w=200&q=90',
-          date: 'March 24, 2024',
+          image: 'images/loremipsum.jpg',
+          date: 'August 24, 2025',
           readTime: '7 min'
         },
         {
           id: 3,
+          slug: 'mengelola-keuangan-keluarga',
           title: 'History and Evolution of Indonesian Financial System',
           excerpt: 'Understanding the development of Indonesia\'s financial system over time for broader perspective.',
-          image: 'https://awsimages.detik.net.id/visual/2023/12/01/jacobus-hubertus-menten-1833-1920-dok-jph-poleyeroica_43.jpeg?w=200&q=90',
-          date: 'December 1, 2023',
+          image: 'images/loremipsum.jpg',
+          date: 'July 1, 2025',
           readTime: '10 min'
         }
       ]
@@ -109,20 +112,21 @@ const News = ({ language = 'id' }) => {
             key={item.id}
             data-id={item.id}
             data-news-item
-            className={`group cursor-pointer transform transition-all duration-500 h-full ${
+            className={`group transform transition-all duration-500 h-full ${
               visibleItems.includes(item.id)
                 ? 'translate-y-0 opacity-100'
                 : 'translate-y-8 opacity-0'
             }`}
             style={{ transitionDelay: `${index * 100}ms` }}
           >
-            <div
-              className={`
-                rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col
-                bg-[#171717] border border-[#404040] hover:border-[#15C26B]
-                shadow-sm hover:shadow-lg group-hover:-translate-y-1
-              `}
-            >
+            <Link href={`/news/${item.slug}`}>
+              <div
+                className={`
+                  rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col cursor-pointer
+                  bg-[#171717] border border-[#404040] hover:border-[#15C26B]
+                  shadow-sm hover:shadow-lg group-hover:-translate-y-1
+                `}
+              >
               {/* Image Container */}
               <div className="relative overflow-hidden">
                 <div className="aspect-[16/9] relative">
@@ -173,33 +177,32 @@ const News = ({ language = 'id' }) => {
                       <Calendar className="w-3 h-3" />
                       <span>{item.date}</span>
                     </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{item.readTime}</span>
-                    </div>
                   </div>
                   
-                  <button className="text-[#15C26B] hover:text-[#15C26B]/80 text-sm font-medium transition-colors duration-200 whitespace-nowrap">
+                  <span className="text-[#15C26B] hover:text-[#15C26B]/80 text-sm font-medium transition-colors duration-200 whitespace-nowrap">
                     {currentContent.readMore} →
-                  </button>
+                  </span>
                 </div>
               </div>
-            </div>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
 
       {/* Optional "View All" Button */}
       <div className="text-center mt-12">
-        <button 
-          className={`
-            px-6 py-3 rounded-lg font-medium transition-all duration-200
-            bg-[#171717] border border-[#404040] hover:border-[#15C26B] text-white
-            hover:shadow-md hover:-translate-y-0.5
-          `}
-        >
-          {language === 'id' ? 'Lihat Semua Artikel' : 'View All Articles'}
-        </button>
+        <Link href="/news">
+          <button 
+            className={`
+              px-6 py-3 rounded-lg font-medium transition-all duration-200
+              bg-[#171717] border border-[#404040] hover:border-[#15C26B] text-white
+              hover:shadow-md hover:-translate-y-0.5
+            `}
+          >
+            {language === 'id' ? 'Lihat Semua Artikel' : 'View All Articles'}
+          </button>
+        </Link>
       </div>
     </section>
   );

@@ -17,6 +17,11 @@ export default function NewsDetailPage() {
   const [article, setArticle] = useState(null);
   const [relatedArticles, setRelatedArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState('id');
+
+  const handleLanguageChange = (newLanguage) => {
+    setLanguage(newLanguage);
+  };
 
   useEffect(() => {
     if (!slug) return;
@@ -63,7 +68,7 @@ export default function NewsDetailPage() {
 
   if (loading) {
     return (
-      <MainLayout>
+      <MainLayout language={language} onLanguageChange={handleLanguageChange}>
         <div className="min-h-screen bg-[#121212] flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#15C26B] mx-auto mb-4"></div>
@@ -76,7 +81,7 @@ export default function NewsDetailPage() {
 
   if (!article) {
     return (
-      <MainLayout>
+      <MainLayout language={language} onLanguageChange={handleLanguageChange}>
         <div className="min-h-screen bg-[#121212] flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4 text-white">Artikel tidak ditemukan</h1>
@@ -96,7 +101,7 @@ export default function NewsDetailPage() {
   }
 
   return (
-    <MainLayout>
+    <MainLayout language={language} onLanguageChange={handleLanguageChange}>
       <Head>
         <title>{article.title} - SampattiNaya</title>
         <meta name="description" content={article.excerpt} />

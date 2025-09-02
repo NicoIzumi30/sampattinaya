@@ -328,7 +328,7 @@ const OnboardingTutorial = ({ onComplete }) => {
   const getModalPosition = () => {
     const baseClasses = "fixed z-50 bg-white dark:bg-gray-900 border shadow-2xl rounded-2xl";
     const mobileClasses = "w-[calc(100vw-2rem)] max-w-sm    ";
-    const desktopClasses = "max-w-md";
+    const desktopClasses = "max-w-lg";
     
     switch (currentStepData.position) {
       case 'center':

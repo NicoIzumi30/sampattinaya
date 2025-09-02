@@ -55,8 +55,6 @@ export default function LoginPage() {
         loginTime: new Date().toISOString()
       }));
       
-      // Show success message
-      alert('Login berhasil!');
       
       // Redirect to dashboard
       router.push('/dashboard');
@@ -95,7 +93,7 @@ export default function LoginPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       
-      <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center py-12 px-4">
+      <main className="min-h-screen flex items-center justify-center py-12 px-4">
         <div className="w-full max-w-md mx-auto">
           {/* Brand Header */}
           <div className="text-center mb-8">

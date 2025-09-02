@@ -1,122 +1,156 @@
-import React from 'react';
 import Link from 'next/link';
-import { Instagram, Github, Globe } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-const Footer = ({ language = 'id' }) => {
-  // Content translations
-  const content = {
-    id: {
-      footer: {
-        note: 'SampattiNaya adalah proyek edukasi non-komersial untuk meningkatkan literasi keuangan masyarakat.',
-        columns: {
-          'Produk': ['Fitur', 'Modul', 'Dashboard'],
-          'Resource': ['FAQ', 'Berita', 'Kebijakan'],
-          'Tentang': ['Visi & Misi', 'Kontak'],
-          'Social': ['Instagram', 'GitHub']
-        }
-      }
-    },
-    en: {
-      footer: {
-        note: 'SampattiNaya is a non-commercial educational project to improve financial literacy in the community.',
-        columns: {
-          'Product': ['Features', 'Modules', 'Dashboard'],
-          'Resources': ['FAQ', 'News', 'Policy'],
-          'About': ['Vision & Mission', 'Contact'],
-          'Social': ['Instagram', 'GitHub']
-        }
-      }
-    }
-  };
+export default function Footer({ language = 'id' }) {
+  const currentYear = new Date().getFullYear();
 
-  const currentContent = content[language] || content.id;
+  const quickLinks = language === 'en' ? [
+    { href: '/', label: 'Home' },
+    { href: '#about-section', label: 'About' },
+    { href: '#features-section', label: 'Features' },
+    { href: '/leaderboard', label: 'Leaderboard' },
+    { href: '/news', label: 'News' },
+  ] : [
+    { href: '/', label: 'Beranda' },
+    { href: '#about-section', label: 'Tentang' },
+    { href: '#features-section', label: 'Fitur' },
+    { href: '/leaderboard', label: 'Peringkat' },
+    { href: '/news', label: 'Berita' },
+  ];
 
-  const footerLinks = [
-    {
-      title: Object.keys(currentContent.footer.columns)[0],
-      items: currentContent.footer.columns[Object.keys(currentContent.footer.columns)[0]]
-    },
-    {
-      title: Object.keys(currentContent.footer.columns)[1],
-      items: currentContent.footer.columns[Object.keys(currentContent.footer.columns)[1]]
-    },
-    {
-      title: Object.keys(currentContent.footer.columns)[2],
-      items: currentContent.footer.columns[Object.keys(currentContent.footer.columns)[2]]
-    }
+  const legalLinks = language === 'en' ? [
+    { href: '/privacy', label: 'Privacy Policy' },
+    { href: '/terms', label: 'Terms & Conditions' },
+    { href: '/help', label: 'Help' },
+    { href: '/contact', label: 'Contact' },
+  ] : [
+    { href: '/privacy', label: 'Kebijakan Privasi' },
+    { href: '/terms', label: 'Syarat & Ketentuan' },
+    { href: '/help', label: 'Bantuan' },
+    { href: '/contact', label: 'Kontak' },
+  ];
+
+  const socialLinks = [
+    { href: '#', icon: Facebook, label: 'Facebook' },
+    { href: '#', icon: Twitter, label: 'Twitter' },
+    { href: '#', icon: Instagram, label: 'Instagram' },
+    { href: '#', icon: Linkedin, label: 'LinkedIn' },
   ];
 
   return (
-    <footer className="border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-auto">
-      <div className="container max-w-screen-2xl py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Brand and description */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="font-bold text-xl text-sampattinaya-accent">SampattiNaya</span>
+    <footer className="bg-[#171717] border-t border-[#404040] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <div className="mb-4">
+              <h3 className="text-xl font-bold text-white mb-2">SampattiNaya</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                {language === 'en' 
+                  ? 'A financial literacy learning platform that helps you manage your finances better through simulations, quizzes, and practical guides.'
+                  : 'Platform pembelajaran literasi finansial yang membantu Anda mengelola keuangan dengan lebih baik melalui simulasi, kuis, dan panduan praktis.'
+                }
+              </p>
             </div>
-            <p className="text-muted-foreground mb-6 max-w-md">
-              {currentContent.footer.note}
-            </p>
+            
+            {/* Social Links */}
             <div className="flex space-x-4">
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Instagram className="h-5 w-5 text-muted-foreground hover:text-foreground" />
-              </Link>
-              <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="h-5 w-5 text-muted-foreground hover:text-foreground" />
-              </Link>
-              <Link href="https://sampattinaya.example" target="_blank" rel="noopener noreferrer">
-                <Globe className="h-5 w-5 text-muted-foreground hover:text-foreground" />
-              </Link>
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <Link
+                    key={social.label}
+                    href={social.href}
+                    className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200"
+                    aria-label={social.label}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
-          {/* Footer links */}
-          {footerLinks.map((column, index) => (
-            <div key={index}>
-              <h3 className="text-sm font-semibold mb-4">{column.title}</h3>
-              <ul className="space-y-3">
-                {column.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>
-                    <Link 
-                      href="#" 
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          {/* Social links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold mb-4">
-              {Object.keys(currentContent.footer.columns)[3]}
-            </h3>
+            <h4 className="text-lg font-semibold text-white mb-4">{language === 'en' ? 'Navigation' : 'Navigasi'}</h4>
             <ul className="space-y-3">
-              {currentContent.footer.columns[Object.keys(currentContent.footer.columns)[3]].map((item, index) => (
-                <li key={index}>
-                  <Link 
-                    href="#" 
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
                   >
-                    {item}
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* Legal Links */}
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">{language === 'en' ? 'Legal' : 'Legal'}</h4>
+            <ul className="space-y-3">
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">{language === 'en' ? 'Contact' : 'Kontak'}</h4>
+            <div className="space-y-3">
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-4 w-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-400 text-sm">
+                  Jakarta, Indonesia
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                <a
+                  href="mailto:info@sampattinaya.com"
+                  className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
+                >
+                  info@sampattinaya.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                <a
+                  href="tel:+628123456789"
+                  className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
+                >
+                  +62 812-3456-789
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-border/40 mt-12 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} SampattiNaya. Hak Cipta Dilindungi.</p>
+        {/* Bottom Footer */}
+        <div className="py-6 border-t border-[#404040]">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-gray-400 text-sm">
+              © {currentYear} SampattiNaya. All rights reserved.
+            </div>
+            <div className="text-gray-400 text-sm">
+              Made with ❤️ for financial literacy
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

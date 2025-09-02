@@ -46,24 +46,15 @@ export function NewsCard({ article }) {
             <User className="h-3 w-3" />
             <span>{article.author}</span>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1">
-              <Clock className="h-3 w-3" />
-              <span>{article.readingTime} min</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Calendar className="h-3 w-3" />
-              <span>{formatDate(article.publishedAt)}</span>
-            </div>
-          </div>
-        </div>
-        
-        <Link href={`/news/${article.slug}`} passHref>
+          <Link href={`/news/${article.slug}`} passHref>
           <Button variant="outline" className="w-full group-hover:bg-[#15C26B] group-hover:text-white transition-colors border-[#404040] text-gray-300 hover:border-[#15C26B]">
             Baca Selengkapnya
           </Button>
         </Link>
-      </CardContent>
+
+        </div>
+        
+              </CardContent>
     </Card>
   );
 }

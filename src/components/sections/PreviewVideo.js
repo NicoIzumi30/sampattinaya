@@ -125,17 +125,6 @@ const PreviewVideo = ({ language = 'id' }) => {
             ${isVisible ? 'hover:shadow-3xl hover:scale-[1.02]' : ''}
           `}>
             
-            {/* Loading State */}
-            {isLoading && !hasError && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#15C26B]/10 to-[#15C26B]/5 z-10">
-                <div className="flex flex-col items-center space-y-4">
-                  <div className="w-12 h-12 border-4 border-[#15C26B] border-t-transparent rounded-full animate-spin"></div>
-                  <p className="text-sm text-gray-400">
-                    Loading preview...
-                  </p>
-                </div>
-              </div>
-            )}
 
             {/* Error State */}
             {hasError && (
@@ -167,7 +156,7 @@ const PreviewVideo = ({ language = 'id' }) => {
                 poster=""
               >
                 <source 
-                  src="https://xguihxuzqibwxjnimxev.supabase.co/storage/v1/object/public/videos/marketing/website/supabase-table-editor.webm" 
+                  src="video/demo720.mp4" 
                   type="video/webm" 
                 />
                 Your browser does not support the video tag.

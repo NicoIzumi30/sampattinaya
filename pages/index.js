@@ -140,6 +140,97 @@ export default function HomePage() {
         headline: 'Asisten Virtual SampattiNaya',
         placeholder: 'Tanyakan apa saja tentang aplikasi ini...'
       }
+    },
+    en: {
+      // Navigation
+      nav: {
+        links: ['Home', 'About', 'Features', 'Leaderboard', 'News'],
+        cta: 'Try Now'
+      },
+      // Hero section
+      hero: {
+        kicker: 'Financial Literacy Platform',
+        headline: 'One Platform Countless Opportunities',
+        subcopy: 'Are you a student, young professional, parent, or small business owner? SampattiNaya helps you understand financial basics, create clear plans, and practice through interactive simulations.',
+        ctas: ['Start Learning', 'View Leaderboard'],
+      },
+      // Impact metrics
+      impact: {
+        stats: [
+          { value: '1,200+', label: 'people have tried the learning modules' },
+          { value: '73%', label: 'successfully saved their first emergency fund within 1 month' },
+          { value: '30 seconds', label: 'average time for financial health check' }
+        ]
+      },
+      // Other sections...
+      sponsors: {
+        title: 'Trusted by Communities & Partners',
+        lead: 'Trusted by various institutions and communities'
+      },
+      about: {
+        title: 'Why Does SampattiNaya Exist?',
+        body: 'SampattiNaya was born from one reality: many people want to manage their money, but are confused about where to start. Our vision: a platform that is friendly to beginners and relevant to those with experience. With an interactive approach, simple design, and smart technology assistance, SampattiNaya helps you take small, consistent steps towards healthier financial conditions.'
+      },
+      preview: {
+        title: 'See How It Works in 1 Minute',
+        body: 'Instead of just reading theory, see how SampattiNaya works: intuitive dashboard, interactive simulations, and clear learning flow.'
+      },
+      features: {
+        title: 'Main Features of SampattiNaya',
+        lead: 'We design features to make learning easier, help decisions, and maintain motivation.',
+        items: [
+          { title: 'Concise Learning Materials', desc: 'Learn financial basics with simple language and real examples.' },
+          { title: 'Personal AI Mentor', desc: 'Virtual assistant that gives recommendations according to your progress.' },
+          { title: 'Budget Simulation', desc: 'Test spending strategies and see the impact directly.' },
+          { title: 'Goal Planner', desc: 'Set targets and calculate monthly savings.' },
+          { title: 'Quiz & Leaderboard', desc: 'Test understanding and see your position on the leaderboard.' },
+          { title: 'Anti-Scam Checker', desc: 'Learn signs of risky investments and safe steps.' }
+        ]
+      },
+      problems: {
+        title: 'Common Problems, Practical Solutions',
+        lead: 'We address the most frequently encountered obstacles.',
+        problems: ['Monthly money runs out before time', 'Difficulty saving emergency funds', 'Not knowing how to assess safe investments', 'Trapped in consumptive installments'],
+        solutions: ['Simple simulation to control spending', 'Savings plan according to ability', 'Education on checking investment legality', 'Tools to calculate installment & BNPL risks']
+      },
+      testimonials: {
+        title: 'Our Users Stories',
+        lead: 'Real experiences from various backgrounds.',
+        items: [
+          { name: 'A.', role: 'Student', quote: 'The simulation opened my eyes to spending leaks.' },
+          { name: 'R.', role: 'Worker', quote: 'The AI Mentor helped me create a realistic 30-day plan.' },
+          { name: 'S.', role: 'Parent', quote: 'The digital security section is very useful.' }
+        ]
+      },
+      news: {
+        title: 'Latest News & Articles',
+        lead: 'Follow financial literacy updates and latest news from SampattiNaya.'
+      },
+      faq: {
+        title: 'Frequently Asked Questions',
+        lead: 'Still unclear about something? Here are the answers.',
+        items: [
+          { q: 'Is this application free?', a: 'Yes, basic features can be used for free.' },
+          { q: 'Do I need to login?', a: 'Yes, login is required to save progress and scores.' },
+          { q: 'Where is my data stored?', a: 'Basic data is stored securely on servers, while some progress is also saved on your device.' },
+          { q: 'Are there AI features?', a: 'Yes, AI is present as a virtual assistant on the landing page and a light personal mentor on the dashboard.' },
+          { q: 'Is it suitable for beginners?', a: 'Very suitable. Concise materials, real examples, and interactive simulations.' }
+        ]
+      },
+      footer: {
+        note: 'SampattiNaya is a non-commercial educational project to improve public financial literacy.',
+        columns: {
+          'Product': ['Features', 'Modules', 'Dashboard'],
+          'Resource': ['FAQ', 'News', 'Policies'],
+          'About': ['Vision & Mission', 'Contact'],
+          'Social': ['Instagram', 'GitHub']
+        }
+      },
+      chat: {
+        tooltip: 'Virtual Assistant',
+        headline: 'SampattiNaya Virtual Assistant',
+        placeholder: 'Ask anything about this application...'
+      }
     }
   };
 

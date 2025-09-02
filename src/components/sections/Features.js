@@ -36,7 +36,7 @@ const Features = memo(({ language = 'id' }) => {
         {
           title: 'Simulasi Budget',
           description: 'Simulasi strategi keuangan tanpa risiko untuk melatih pengambilan keputusan.',
-          image: '/images/simulasi.png',
+          image: '/images/simulasi.jpg',
           alt: 'Screenshot simulasi budget dan analisis keuangan',
           icon: Calculator,
           size: 'medium'
@@ -44,7 +44,7 @@ const Features = memo(({ language = 'id' }) => {
         {
           title: 'Kuis Finansial',
           description: 'Uji pemahaman dengan kuis interaktif dan dapatkan skor untuk mengukur progress.',
-          image: '/images/ai.jpg',
+          image: '/images/kuis.jpg',
           alt: 'Screenshot kuis finansial interaktif',
           icon: HelpCircle,
           size: 'small'
@@ -52,7 +52,7 @@ const Features = memo(({ language = 'id' }) => {
         {
           title: 'Papan Peringkat',
           description: 'Kompetisi sehat dengan ranking dan sistem achievement untuk memotivasi belajar.',
-          image: '/images/leaderboard.png',
+          image: '/images/leaderboard.jpg',
           alt: 'Screenshot papan peringkat dan achievement system',
           icon: Trophy,
           size: 'small'
@@ -83,7 +83,7 @@ const Features = memo(({ language = 'id' }) => {
         {
           title: 'Budget Simulator',
           description: 'Risk-free financial strategy simulation for decision making practice.',
-          image: '/images/simulasi.png',
+          image: '/images/simulasi.jpg',
           alt: 'Screenshot of budget simulation and analysis',
           icon: Calculator,
           size: 'medium'
@@ -91,7 +91,7 @@ const Features = memo(({ language = 'id' }) => {
         {
           title: 'Financial Quiz',
           description: 'Test your understanding with interactive quizzes and get scores to measure progress.',
-          image: '/images/ai.jpg',
+          image: '/images/kuis.jpg',
           alt: 'Screenshot of interactive financial quiz',
           icon: HelpCircle,
           size: 'small'
@@ -99,7 +99,7 @@ const Features = memo(({ language = 'id' }) => {
         {
           title: 'Leaderboard',
           description: 'Healthy competition with ranking and achievement system to motivate learning.',
-          image: '/images/leaderboard.png',
+          image: '/images/leaderboard.jpg',
           alt: 'Screenshot of leaderboard and achievement system',
           icon: Trophy,
           size: 'small'
@@ -174,7 +174,7 @@ const Features = memo(({ language = 'id' }) => {
               >
                 <div className="h-full p-5 rounded-2xl bg-[#171717] border border-[#404040] flex flex-col">
                   {/* Header */}
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center gap-3 mb-3 flex-shrink-0">
                     <div className="p-2 rounded-lg bg-[#15C26B]/10 border border-[#15C26B]/20">
                       <IconComponent className="w-5 h-5 text-[#15C26B]" />
                     </div>
@@ -184,27 +184,21 @@ const Features = memo(({ language = 'id' }) => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed mb-2">
+                  <p className="text-gray-400 text-sm leading-relaxed mb-3 flex-shrink-0">
                     {feature.description}
                   </p>
 
-                  {/* Image - Optimized sizing for better proportions dengan height tambahan */}
-                  <div className="rounded-lg border border-[#404040] overflow-hidden bg-[#121212] h-full">
-                    <LazyLoad minHeight={index === 0 ? '240px' : index === 1 ? '192px' : '160px'}>
-                      <OptimizedImage
-                        src={feature.image}
-                        alt={feature.alt}
-                        width={index === 0 ? 600 : index === 1 ? 400 : 300}
-                        height={index === 0 ? 240 : index === 1 ? 192 : 160}
-                        quality={85}
-                        priority={index === 0} // Priority for first image only
-                        className={`w-full object-cover ${
-                          index === 0 ? 'h-60 lg:h-full' : // Extra Large card - much bigger image
-                          index === 1 ? 'h-48 lg:h-64' : // Medium card top right - bigger image
-                          'h-40 lg:h-full' // Small cards bottom - increased height
-                        }`}
-                      />
-                    </LazyLoad>
+                  {/* Image - Full size to fill remaining space */}
+                  <div className="flex-1 min-h-0 rounded-lg border border-[#404040] overflow-hidden bg-[#121212]">
+                    <OptimizedImage
+                      src={feature.image}
+                      alt={feature.alt}
+                      width={800}
+                      height={600}
+                      quality={85}
+                      priority={index === 0}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
               </div>

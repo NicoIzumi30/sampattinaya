@@ -10,6 +10,11 @@ import MainLayout from '@/components/layout/MainLayout';
 export default function LeaderboardPage() {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState('id');
+
+  const handleLanguageChange = (newLanguage) => {
+    setLanguage(newLanguage);
+  };
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -75,7 +80,7 @@ export default function LeaderboardPage() {
 
   if (loading) {
     return (
-      <MainLayout>
+      <MainLayout language={language} onLanguageChange={handleLanguageChange}>
         <div className="min-h-screen bg-[#121212] flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#15C26B] mx-auto mb-4"></div>
@@ -87,7 +92,7 @@ export default function LeaderboardPage() {
   }
 
   return (
-    <MainLayout>
+    <MainLayout language={language} onLanguageChange={handleLanguageChange}>
       <Head>
         <title>Peringkat - SampattiNaya</title>
         <meta name="description" content="Lihat peringkat Top 10 pengguna SampattiNaya berdasarkan skor pembelajaran" />

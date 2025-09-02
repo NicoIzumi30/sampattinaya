@@ -8,7 +8,7 @@ const About = ({ language = 'id' }) => {
     id: {
       title: 'Mengapa SampattiNaya Hadir?',
       subtitle: 'Membangun literasi finansial untuk masa depan yang lebih baik',
-      mainText: 'SampattiNaya lahir dari satu kenyataan: banyak orang ingin mengatur uang, tetapi bingung harus mulai dari mana. Visi kami sederhana namun kuat—menciptakan platform yang ramah bagi pemula dan tetap relevan bagi yang berpengalaman.',
+      mainText: 'SampattiNaya lahir dari satu kenyataan: banyak orang ingin mengatur uang, tetapi bingung harus mulai dari mana. Visi kami sederhana namun kuat menciptakan platform yang ramah bagi pemula dan tetap relevan bagi yang berpengalaman.',
       sections: [
         {
           title: 'Misi Kami',
@@ -36,7 +36,7 @@ const About = ({ language = 'id' }) => {
     en: {
       title: 'Why SampattiNaya Exists?',
       subtitle: 'Building financial literacy for a better future',
-      mainText: 'SampattiNaya was born from one simple truth: many people want to manage their money, but don\'t know where to start. Our vision is simple yet powerful—creating a platform that\'s beginner-friendly while remaining relevant for the experienced.',
+      mainText: 'SampattiNaya was born from one simple truth: many people want to manage their money, but don\'t know where to start. Our vision is simple yet powerful creating a platform that\'s beginner-friendly while remaining relevant for the experienced.',
       sections: [
         {
           title: 'Our Mission',

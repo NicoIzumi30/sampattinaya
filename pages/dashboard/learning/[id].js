@@ -53,7 +53,7 @@ export default function CourseDetailPage() {
       status: "completed",
       lessons: 5,
       rating: 4.8,
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://www.youtube.com/embed/a81bXkES-gg",
       instructor: "Dr. Sarah Johnson",
       students: 1250,
       fullDescription: "Course komprehensif yang akan mengajarkan Anda dasar-dasar literasi finansial. Mulai dari konsep dasar hingga aplikasi praktis dalam kehidupan sehari-hari. Anda akan belajar bagaimana mengelola keuangan pribadi dengan bijak dan membuat keputusan finansial yang tepat.",
@@ -70,7 +70,7 @@ export default function CourseDetailPage() {
           duration: "5:24", 
           description: "Pengenalan konsep literasi finansial dan mengapa penting untuk kehidupan",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/hUKc-YbKv4tq3Ohd"
         },
         { 
           id: 2, 
@@ -78,7 +78,7 @@ export default function CourseDetailPage() {
           duration: "6:15", 
           description: "Memahami dampak pengelolaan keuangan yang baik terhadap kehidupan",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/hUKc-YbKv4tq3Ohd"
         },
         { 
           id: 3, 
@@ -86,7 +86,7 @@ export default function CourseDetailPage() {
           duration: "8:32", 
           description: "Mengenal berbagai komponen dalam keuangan pribadi",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/hUKc-YbKv4tq3Ohd"
         },
         { 
           id: 4, 
@@ -94,7 +94,7 @@ export default function CourseDetailPage() {
           duration: "7:18", 
           description: "Cara menetapkan dan mencapai tujuan keuangan yang efektif",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/hUKc-YbKv4tq3Ohd"
         },
         { 
           id: 5, 
@@ -116,7 +116,7 @@ export default function CourseDetailPage() {
       status: "in_progress", 
       lessons: 6,
       rating: 4.9,
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://www.youtube.com/embed/ttuVo_t4XNI",
       instructor: "Prof. Michael Chen",
       students: 980,
       fullDescription: "Pelajari cara membuat dan mengelola anggaran yang efektif untuk mencapai tujuan keuangan Anda. Course ini akan mengajarkan berbagai metode budgeting, tools yang dapat digunakan, dan cara mengatasi tantangan dalam pengelolaan anggaran.",
@@ -134,7 +134,7 @@ export default function CourseDetailPage() {
           duration: "8:45", 
           description: "Memahami konsep pembagian anggaran yang efektif dan mudah diterapkan",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/ttuVo_t4XNI"
         },
         { 
           id: 2, 
@@ -142,7 +142,7 @@ export default function CourseDetailPage() {
           duration: "7:32", 
           description: "Teknik dan strategi untuk melacak pengeluaran harian secara efektif",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/ttuVo_t4XNI"
         },
         { 
           id: 3, 
@@ -150,7 +150,7 @@ export default function CourseDetailPage() {
           duration: "10:15", 
           description: "Langkah-langkah praktis membuat anggaran bulanan yang realistis",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/ttuVo_t4XNI"
         },
         { 
           id: 4, 
@@ -158,7 +158,7 @@ export default function CourseDetailPage() {
           duration: "6:50", 
           description: "Review aplikasi dan tools terbaik untuk mengelola anggaran",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/ttuVo_t4XNI"
         },
         { 
           id: 5, 
@@ -166,7 +166,7 @@ export default function CourseDetailPage() {
           duration: "8:20", 
           description: "Cara mengevaluasi efektivitas anggaran dan melakukan penyesuaian",
           completed: false,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/ttuVo_t4XNI"
         },
         { 
           id: 6, 
@@ -174,7 +174,7 @@ export default function CourseDetailPage() {
           duration: "6:30", 
           description: "Analisis kasus nyata penerapan anggaran dalam berbagai situasi",
           completed: false,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/ttuVo_t4XNI"
         }
       ]
     },
@@ -188,7 +188,7 @@ export default function CourseDetailPage() {
       status: "in_progress", 
       lessons: 5,
       rating: 4.7,
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://www.youtube.com/embed/NPGgBjwE3L4",
       instructor: "Dr. Lisa Wong",
       students: 750,
       fullDescription: "Bangun kebiasaan menabung yang konsisten dan kuat. Course ini mengajarkan strategi efektif untuk menabung, membangun dana darurat, dan mencapai tujuan keuangan jangka pendek maupun panjang.",
@@ -205,7 +205,7 @@ export default function CourseDetailPage() {
           duration: "7:30", 
           description: "Memahami mindset dan psikologi di balik kebiasaan menabung",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/NPGgBjwE3L4"
         },
         { 
           id: 2, 
@@ -213,7 +213,7 @@ export default function CourseDetailPage() {
           duration: "8:15", 
           description: "Cara menghitung dan menentukan jumlah dana darurat yang ideal",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/NPGgBjwE3L4"
         },
         { 
           id: 3, 
@@ -221,7 +221,7 @@ export default function CourseDetailPage() {
           duration: "9:45", 
           description: "Implementasi sistem menabung otomatis yang efektif",
           completed: true,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/NPGgBjwE3L4"
         },
         { 
           id: 4, 
@@ -229,7 +229,7 @@ export default function CourseDetailPage() {
           duration: "8:00", 
           description: "Perbandingan berbagai produk tabungan dan deposito",
           completed: false,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/NPGgBjwE3L4"
         },
         { 
           id: 5, 
@@ -237,7 +237,7 @@ export default function CourseDetailPage() {
           duration: "6:30", 
           description: "Strategi menabung untuk tujuan jangka pendek dan panjang",
           completed: false,
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+          videoUrl: "https://www.youtube.com/embed/NPGgBjwE3L4"
         }
       ]
     }

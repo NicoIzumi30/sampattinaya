@@ -1,164 +1,122 @@
+import React from 'react';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Instagram, Github, Globe } from 'lucide-react';
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+const Footer = ({ language = 'id' }) => {
+  // Content translations
+  const content = {
+    id: {
+      footer: {
+        note: 'SampattiNaya adalah proyek edukasi non-komersial untuk meningkatkan literasi keuangan masyarakat.',
+        columns: {
+          'Produk': ['Fitur', 'Modul', 'Dashboard'],
+          'Resource': ['FAQ', 'Berita', 'Kebijakan'],
+          'Tentang': ['Visi & Misi', 'Kontak'],
+          'Social': ['Instagram', 'GitHub']
+        }
+      }
+    },
+    en: {
+      footer: {
+        note: 'SampattiNaya is a non-commercial educational project to improve financial literacy in the community.',
+        columns: {
+          'Product': ['Features', 'Modules', 'Dashboard'],
+          'Resources': ['FAQ', 'News', 'Policy'],
+          'About': ['Vision & Mission', 'Contact'],
+          'Social': ['Instagram', 'GitHub']
+        }
+      }
+    }
+  };
 
-  const quickLinks = [
-    { href: '/', label: 'Beranda' },
-    { href: '#about-section', label: 'Tentang' },
-    { href: '#features-section', label: 'Fitur' },
-    { href: '/leaderboard', label: 'Peringkat' },
-    { href: '/news', label: 'Berita' },
-  ];
+  const currentContent = content[language] || content.id;
 
-  const legalLinks = [
-    { href: '/privacy', label: 'Kebijakan Privasi' },
-    { href: '/terms', label: 'Syarat & Ketentuan' },
-    { href: '/help', label: 'Bantuan' },
-    { href: '/contact', label: 'Kontak' },
-  ];
-
-  const socialLinks = [
-    { href: '#', icon: Facebook, label: 'Facebook' },
-    { href: '#', icon: Twitter, label: 'Twitter' },
-    { href: '#', icon: Instagram, label: 'Instagram' },
-    { href: '#', icon: Linkedin, label: 'LinkedIn' },
+  const footerLinks = [
+    {
+      title: Object.keys(currentContent.footer.columns)[0],
+      items: currentContent.footer.columns[Object.keys(currentContent.footer.columns)[0]]
+    },
+    {
+      title: Object.keys(currentContent.footer.columns)[1],
+      items: currentContent.footer.columns[Object.keys(currentContent.footer.columns)[1]]
+    },
+    {
+      title: Object.keys(currentContent.footer.columns)[2],
+      items: currentContent.footer.columns[Object.keys(currentContent.footer.columns)[2]]
+    }
   ];
 
   return (
-    <footer className="bg-[#171717] border-t border-[#404040] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-1">
-            <div className="mb-4">
-              <h3 className="text-xl font-bold text-white mb-2">SampattiNaya</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Platform pembelajaran literasi finansial yang membantu Anda mengelola keuangan 
-                dengan lebih baik melalui simulasi, kuis, dan panduan praktis.
-              </p>
+    <footer className="border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-auto">
+      <div className="container max-w-screen-2xl py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Brand and description */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center space-x-2 mb-4">
+              <span className="font-bold text-xl text-sampattinaya-accent">SampattiNaya</span>
             </div>
-            
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <Link
-                    key={social.label}
-                    href={social.href}
-                    className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200"
-                    aria-label={social.label}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Navigasi</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {legalLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Kontak</h4>
-            <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-gray-400 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-400 text-sm">
-                  Jakarta, Indonesia
-                </span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-gray-400 flex-shrink-0" />
-                <a
-                  href="mailto:info@sampattinaya.com"
-                  className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
-                >
-                  info@sampattinaya.com
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-gray-400 flex-shrink-0" />
-                <a
-                  href="tel:+628123456789"
-                  className="text-gray-400 hover:text-[#15C26B] transition-colors duration-200 text-sm"
-                >
-                  +62 812-3456-789
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="py-8 border-t border-[#404040]">
-          <div className="max-w-md mx-auto text-center">
-            <h4 className="text-lg font-semibold text-white mb-2">Dapatkan Update Terbaru</h4>
-            <p className="text-gray-400 text-sm mb-4">
-              Berlangganan untuk mendapatkan tips finansial dan update fitur terbaru
+            <p className="text-muted-foreground mb-6 max-w-md">
+              {currentContent.footer.note}
             </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Masukkan email Anda"
-                className="flex-1 px-4 py-2 bg-[#121212] border border-[#404040] rounded-lg text-white placeholder:text-gray-400 focus:border-[#15C26B] focus:ring-1 focus:ring-[#15C26B] focus:outline-none"
-              />
-              <Button className="bg-[#15C26B] hover:bg-[#10A558] text-white">
-                Subscribe
-              </Button>
+            <div className="flex space-x-4">
+              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <Instagram className="h-5 w-5 text-muted-foreground hover:text-foreground" />
+              </Link>
+              <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <Github className="h-5 w-5 text-muted-foreground hover:text-foreground" />
+              </Link>
+              <Link href="https://sampattinaya.example" target="_blank" rel="noopener noreferrer">
+                <Globe className="h-5 w-5 text-muted-foreground hover:text-foreground" />
+              </Link>
             </div>
+          </div>
+
+          {/* Footer links */}
+          {footerLinks.map((column, index) => (
+            <div key={index}>
+              <h3 className="text-sm font-semibold mb-4">{column.title}</h3>
+              <ul className="space-y-3">
+                {column.items.map((item, itemIndex) => (
+                  <li key={itemIndex}>
+                    <Link 
+                      href="#" 
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Social links */}
+          <div>
+            <h3 className="text-sm font-semibold mb-4">
+              {Object.keys(currentContent.footer.columns)[3]}
+            </h3>
+            <ul className="space-y-3">
+              {currentContent.footer.columns[Object.keys(currentContent.footer.columns)[3]].map((item, index) => (
+                <li key={index}>
+                  <Link 
+                    href="#" 
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Footer */}
-        <div className="py-6 border-t border-[#404040]">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
-              © {currentYear} SampattiNaya. All rights reserved.
-            </div>
-            <div className="text-gray-400 text-sm">
-              Made with ❤️ for financial literacy
-            </div>
-          </div>
+        {/* Copyright */}
+        <div className="border-t border-border/40 mt-12 pt-8 text-center text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} SampattiNaya. Hak Cipta Dilindungi.</p>
         </div>
       </div>
     </footer>
   );
-}
+};
 
+export default Footer;

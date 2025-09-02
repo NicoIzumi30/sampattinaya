@@ -148,8 +148,12 @@ export default function HomePage() {
   const currentContent = content[language] || content.id;
   const featureIcons = [BookOpen, Brain, Calculator, Target, Trophy, Shield];
 
+  const handleLanguageChange = (newLanguage) => {
+    setLanguage(newLanguage);
+  };
+
   return (
-    <MainLayout>
+    <MainLayout language={language} onLanguageChange={handleLanguageChange}>
       <Head>
         <title>SampattiNaya — Belajar Keuangan Lebih Mudah</title>
         <meta name="description" content="Platform literasi finansial dengan modul ringkas, simulasi interaktif, dan pengalaman modern ala Supabase." />
@@ -348,7 +352,7 @@ export default function HomePage() {
           <DialogTrigger asChild>
             <Button
               size="lg"
-              className="fixed bottom-6 right-6 rounded-full w-14 h-14 bg-sampattinaya-accent hover:opacity-90 text-white sampattinaya-shadow"
+              className="fixed bottom-6 right-6 rounded-full w-14 h-14 bg-sampattinaya-accent hover:opacity-90 text-white sampattinaya-shadow z-40"
             >
               <MessageCircle className="w-6 h-6" />
             </Button>

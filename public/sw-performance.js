@@ -7,6 +7,8 @@ const DYNAMIC_CACHE = 'dynamic-v1';
 const STATIC_ASSETS = [
   '/',
   '/offline',
+  '/leaderboard',
+  '/news',
   '/_next/static/css/',
   '/_next/static/chunks/',
   '/images/learning.jpg',
